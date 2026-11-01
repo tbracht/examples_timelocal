@@ -30,7 +30,6 @@ start = time.time()
 _, S_bf = spec.get_onesided_spectrum(e_min=-5, e_max=5, dm=False)
 t_bf = time.time() - start
 print("time-local {:.1f} s, brute force {:.1f} s".format(t_tl, t_bf))
-print("max |S_tl - S_bf| / |S_bf| = {:.2e}".format(np.max(np.abs(S_tl - S_bf)/np.abs(S_bf))))
 np.savez("spectrum_pulsed.npz", energies=energies, S_tl=S_tl, S_bf=S_bf)
 
 fig, ax = plt.subplots(figsize=(6, 4))

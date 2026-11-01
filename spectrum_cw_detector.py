@@ -42,14 +42,10 @@ start = time.time()
 _, G1_tl, _ = spec.G1_tl()
 t_tl = time.time() - start
 print("brute force {:.1f} s, time-local {:.1f} s".format(t_bf, t_tl))
-print("<x>_ss = G1(0): bf {:.10f}, tl {:.10f}".format(G1_bf[0].real, G1_tl[0].real))
-print("max |G1_tl - G1_bf| / |G1(0)| = {:.2e}".format(np.max(np.abs(G1_tl - G1_bf))/abs(G1_bf[0])))
 
 energies = np.linspace(-4, 4, 2001)
 S_bf, S_tl = detector_spectrum(tau, G1_bf, energies), detector_spectrum(tau, G1_tl, energies)
-print("detector spectrum: max |S_tl - S_bf| / S_bf = {:.2e}".format(np.max(np.abs(S_tl - S_bf)/np.abs(S_bf))))
 i_m, i_p = np.argmin(np.abs(energies + 1)), np.argmin(np.abs(energies - 1))
-print("phonon sideband: S(-1 meV) = {:.3e}, S(+1 meV) = {:.3e}, ratio -/+ = {:.2f}".format(S_bf[i_m], S_bf[i_p], S_bf[i_m]/S_bf[i_p]))
 np.savez("spectrum_cw_detector.npz", tau=tau, G1_bf=G1_bf, G1_tl=G1_tl, energies=energies, S_bf=S_bf, S_tl=S_tl)
 
 fig, axes = plt.subplots(1, 2, figsize=(12, 4))

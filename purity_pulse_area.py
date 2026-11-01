@@ -51,7 +51,6 @@ else:
     P_bf = sweep(areas_bf, use_dm=False)
     np.savez(data_file, areas=areas, P_tl=P_tl, areas_bf=areas_bf, P_bf=P_bf)
 P_tl_at_bf = P_tl[np.searchsorted(areas, areas_bf)]
-print("max |(1 - P)_tl - (1 - P)_bf| / (1 - P)_bf = {:.2e}".format(np.max(np.abs(P_tl_at_bf - P_bf)/np.abs(1 - P_bf))))
 
 fig, ax = plt.subplots(figsize=(6, 4))
 ax.plot(areas, 1 - P_tl, "k-", lw=1, label="tl")
