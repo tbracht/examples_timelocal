@@ -40,6 +40,7 @@ Tested on Ubuntu 24.04 with Python 3.12. Should also work on WSL.
    git clone -b ace_update https://github.com/tbracht/pyaceqd.git
    pip install ./pyaceqd
    ```
+Note: if you choose an editable install, also use `--no-build-isolation` in both cases.
 
 ## Running
 
